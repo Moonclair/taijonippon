@@ -1,0 +1,68 @@
+html{
+    scroll-behavior: smooth;
+}
+/* SECCION INICIO - fondo */
+.inicio{
+    background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)),
+    url(https://4kwallpapers.com/images/wallpapers/tanjiro-kamado-2880x1800-9324.jpg);
+    background-size: cover;
+    background-position: center center;
+    color: #fff;}
+    .inicio .contenido-seccion{
+        max-width: 1000px;
+        margin: auto;
+        text-align: center;
+        padding: 0 10px;
+    }
+    .inicio .contenido-seccion header{
+        padding: 30px;
+    }
+   
+   
+    /* SECCION SOBRE MI*/
+.quienes{
+    background-color: #e6e6e6;
+    padding: 140px 0 100px 0;
+    text-align: center;
+}
+.quienes .contenido-seccion{
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 10px;
+}
+.quienes .contenido-seccion h3{
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.quienes .contenido-seccion .especial{
+    color: forestgreen;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.quienes .contenido-seccion p{
+    max-width: 700px;
+    margin: auto;
+    color: #666;
+}
+.quienes .contenido-seccion .fila{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.quienes .contenido-seccion .fila .col{
+    width: 30%;
+}
+.quienes .contenido-seccion .fila .col i{
+    color: crimson;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 2px solid crimson;
+    line-height: 40px;
+    border-radius: 50%;
+}
+.quienes .contenido-seccion .fila .col span{
+    display: block;
+    font-weight: bold;
+    margin: 8px 0;
+}
