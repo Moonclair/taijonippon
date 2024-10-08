@@ -1,14 +1,14 @@
 
 @font-face {
   font-family: 'Shakuro Brush';
-  src: url('./fonts/ShakuroBrush.ttf') format('truetype');
+  src: url('./fonts/ShakuroBrush.otf') format('truetype');
 }
 
 html, body {
-  height: 100%; /* Altura total de la página */
+  height: 100%; /* Altura total de la pï¿½gina */
   width: 100%;
   background-color: #ffffff; /* Fondo blanco */
-  margin: 0; /* Eliminar márgenes por defecto */
+  margin: 0; /* Eliminar mï¿½rgenes por defecto */
   scroll-behavior: smooth;
 }
 
@@ -26,12 +26,12 @@ body {
   height: 600px;
   border-radius: 100%;
   overflow: hidden;
-  position: fixed; /* Fija la posición */
+  position: fixed; /* Fija la posiciï¿½n */
   top: 47%; /* Centrado verticalmente */
   left: 25%; /* Centrado horizontalmente */
   transform: translate(-50%, -50%); /* Ajuste para centrar */
   background-color: #bc1010;
-  z-index: 0; /* Detrás del texto */
+  z-index: 0; /* Detrï¿½s del texto */
 }
 
 
@@ -40,9 +40,9 @@ body {
   display: block;
   position: absolute;
   top: 0; left: 0;
-  background-color: #FFF; /* Semicírculo blanco */
+  background-color: #FFF; /* Semicï¿½rculo blanco */
   width: 100%; 
-  height: 50%; /* Semicírculo superior */
+  height: 50%; /* Semicï¿½rculo superior */
 }
 
 .disc {
@@ -62,13 +62,13 @@ body {
   }
   
   &::before {
-    background-color: #FFF; /* Semicírculo blanco */
-    transform: rotateY(0deg); /* Sin rotación para el lado visible */
+    background-color: #FFF; /* Semicï¿½rculo blanco */
+    transform: rotateY(0deg); /* Sin rotaciï¿½n para el lado visible */
   }
   
   &::after {
-    background-color: #bc1010; /* Lado blanco detrás */
-    transform: rotateY(180deg); /* Lado blanco detrás */
+    background-color: #bc1010; /* Lado blanco detrï¿½s */
+    transform: rotateY(180deg); /* Lado blanco detrï¿½s */
   }
 }
 
@@ -77,8 +77,8 @@ body {
   top: 40%; /* Ajustar hacia arriba */
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px; /* Ajusta el tamaño del logo */
-  z-index: 1; /* Asegúrate de que esté por encima de la luna */
+  width: 400px; /* Ajusta el tamaï¿½o del logo */
+  z-index: 1; /* Asegï¿½rate de que estï¿½ por encima de la luna */
 }
 
 .nippon {
@@ -86,9 +86,9 @@ body {
   top: 80%; /* Ajuste para que no suba tanto */
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 120px; /* Tamaño del texto "NIPPON" */
+  font-size: 120px; /* Tamaï¿½o del texto "NIPPON" */
   color: #ffffff; /* Color del texto */
-  z-index: 1; /* Asegúrate de que esté por encima de la luna */
+  z-index: 1; /* Asegï¿½rate de que estï¿½ por encima de la luna */
 }
 
 .countdown {
@@ -96,14 +96,14 @@ body {
   left: 20%;
   margin-top: 600px; /* Espacio reducido para que no se superponga con la luna */
   color: #222; /* Color del texto del contador */
-  z-index: 10; /* Asegúrate de que esté por encima de la luna */
+  z-index: 10; /* Asegï¿½rate de que estï¿½ por encima de la luna */
 }
 
 .socials {
 	 position: relative;
   left: 20%;
   margin-top: 20px; /* Espacio entre el contador y las redes sociales */
-  z-index: 10; /* Asegúrate de que esté por encima de la luna */
+  z-index: 10; /* Asegï¿½rate de que estï¿½ por encima de la luna */
 }
 
 .social-buttons a {
@@ -126,5 +126,5 @@ body {
   padding: 10px; /* Espacio alrededor */
   background-color: #f0f0f0; /* Color de fondo para el pie */
   color: #222; /* Color del texto */
-  z-index: 10; /* Asegúrate de que esté por encima de la luna */
+  z-index: 10; /* Asegï¿½rate de que estï¿½ por encima de la luna */
 }
