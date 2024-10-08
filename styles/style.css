@@ -1,8 +1,7 @@
 
 @font-face {
-  src: url('./fonts/ShakuroBrush.otf') format('truetype');
   font-family: 'Shakuro Brush';
-  
+  src: url('./fonts/ShakuroBrush.otf') format('truetype');
 }
 
 html, body {
