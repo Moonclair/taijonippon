@@ -3,83 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="img/icon" href="./img/favicon.png">
     <title>Taijo Nippon</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 200vh; /* Para permitir el scroll */
-            background-color: #f4f4f4;
-            overflow: hidden; /* Evitar el scroll en la página */
-        }
-
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .sun {
-            position: absolute;
-            width: 200px; /* Tamaño del sol */
-            height: 200px; /* Tamaño del sol */
-            border-radius: 50%;
-            background-color: red;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
-            transition: opacity 0.5s ease;
-            opacity: 0; /* Comienza oculto */
-        }
-
-        .sun.reveal {
-            opacity: 1; /* Se muestra cuando se agrega la clase */
-        }
-
-        .logo {
-            position: relative;
-            z-index: 1; /* Asegurarse de que el logo esté sobre el sol */
-            width: 150px; /* Ajusta el tamaño del logo */
-        }
-
-        @keyframes sunAnimation {
-            0% { transform: scale(0.5); }
-            50% { transform: scale(1); }
-            100% { transform: scale(0.5); }
-        }
-
-        .sun-animation {
-            animation: sunAnimation 1s infinite alternate;
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/style.css">
+	<link rel="icon" type="img/icon" href="./img/favicon.png">
 </head>
 <body>
-    <div class="container">
-        <img src="https://your-logo-url.com/taijo.png" alt="Logo Taijo" class="logo">
-        <div class="sun"></div>
+    <div class="moon">
+        <div class="disc"></div>
+        <img src="./img/Logo Taijo.png" alt="Logo Taijo" class="logo">
+        <div class="nippon">NIPPON</div>
+    </div>
+    
+    <div class="countdown">
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h1>DIAS HASTA EL 17 DE NOVIEMBRE:</h1>
+		<h1><p id="days"></p></h1>
+	   <h1><p id="timer"></p></h1>
+     
     </div>
 
-    <script>
-        window.addEventListener('scroll', function() {
-            const sun = document.querySelector('.sun');
-            const scrollY = window.scrollY;
-            const maxScroll = document.body.scrollHeight - window.innerHeight;
+    <div class="socials">
 
-            if (scrollY < maxScroll) {
-                // Calcula la opacidad del sol basado en el scroll
-                const opacity = Math.min(scrollY / (maxScroll / 2), 1);
-                sun.style.opacity = opacity;
-                // Alternar la animación
-                if (opacity > 0) {
-                    sun.classList.add('sun-animation');
-                } else {
-                    sun.classList.remove('sun-animation');
-                }
-            }
-        });
-    </script>
+        <h2>MANTENETE AL TANTO DE TODO!</h2>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com/taijoproducciones" target="_blank">FACEBOOK</a>
+            <a href="https://www.instagram.com/taijoproducciones/" target="_blank">Instagram</a>
+            <a href="mailto:sebastian@taijonippon.com.ar">CORREO ELECTRONICO</a>
+        </div>
+    </div>
+	
+	   <div class="footer">
+        <p>SUSCRIBITE A NUESTRO NEWSLETTER</p>
+    </div>
+
+    <script src="./scripts/script.js"></script>
 </body>
 </html>
