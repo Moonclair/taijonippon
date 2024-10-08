@@ -2,51 +2,84 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Taijo Nippon</title>
     <link rel="icon" type="img/icon" href="./img/favicon.png">
-    <link rel="stylesheet" href="./style/estilo.css">
-</head> 
+    <title>Taijo Nippon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh; /* Para permitir el scroll */
+            background-color: #f4f4f4;
+            overflow: hidden; /* Evitar el scroll en la página */
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .sun {
+            position: absolute;
+            width: 200px; /* Tamaño del sol */
+            height: 200px; /* Tamaño del sol */
+            border-radius: 50%;
+            background-color: red;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+            transition: opacity 0.5s ease;
+            opacity: 0; /* Comienza oculto */
+        }
+
+        .sun.reveal {
+            opacity: 1; /* Se muestra cuando se agrega la clase */
+        }
+
+        .logo {
+            position: relative;
+            z-index: 1; /* Asegurarse de que el logo esté sobre el sol */
+            width: 150px; /* Ajusta el tamaño del logo */
+        }
+
+        @keyframes sunAnimation {
+            0% { transform: scale(0.5); }
+            50% { transform: scale(1); }
+            100% { transform: scale(0.5); }
+        }
+
+        .sun-animation {
+            animation: sunAnimation 1s infinite alternate;
+        }
+    </style>
+</head>
 <body>
-    <section class="inicio" id="inicio">
-        <div class="contenido-seccion">
-    <div class="head">
-    <section class="logo" id="logo">
-        <img href="./img/TAIJO banner github.png"></a>
-        <div class="contenido-seccion">
-          
-    <div class="nav-bar"></div>
+    <div class="container">
+        <img src="https://your-logo-url.com/taijo.png" alt="Logo Taijo" class="logo">
+        <div class="sun"></div>
     </div>
-    <nav id="nav" class="nav">
-       <a href="#inicio">Inicio</a>
-       <a href="#quienes">Quienes somos</a>
-       <a href="#actividades">Actividades</a>
-       <a href="#ubicacion">Ubicación</a>
-       <a href="#contacto">Contacto</a>
-       </nav>
-    </div>
-</section>
-    <header>
-    <section class="quienes" id="quienes">
-        <div class="contenido-seccion">
-            <h2 class="titulo-seccion">Quienes somos</h2>
-            <p>Taijo Nippon es un evento que reune al anime, el K-pop,los videojuegos,el cosplay,artistas y gastronomia en un mismo lugar.</p>
-        </div>
-    
- </header>
-</section>
-    <section class="actividades" id="actividades">
-        <div class="contenido-seccion">
-            <h2 class="titulo-seccion">Actividades</h2>
-            <h3>Sector de videojuegos</h3>
-            <h3>Sorteos</h3>
-            <h3>Trivias</h3>
-            <h3>Karaoke</h3>
-            <h3>Bandas</h3>
-            <h3>Y mucho más!</h3>
-        </div>
-    </section>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const sun = document.querySelector('.sun');
+            const scrollY = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+            if (scrollY < maxScroll) {
+                // Calcula la opacidad del sol basado en el scroll
+                const opacity = Math.min(scrollY / (maxScroll / 2), 1);
+                sun.style.opacity = opacity;
+                // Alternar la animación
+                if (opacity > 0) {
+                    sun.classList.add('sun-animation');
+                } else {
+                    sun.classList.remove('sun-animation');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
