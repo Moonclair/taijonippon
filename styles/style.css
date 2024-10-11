@@ -86,11 +86,7 @@ body {
   z-index: 2; /* Aseg?rate de que est? por encima de la luna */
 }
 
-.container {
-display: grid;
-grid-template-columns: 1fr 1fr;
-grid-template-rows: repeat(10, 1fr); 
-}
+
 
 
 
@@ -110,14 +106,14 @@ grid-template-rows: repeat(10, 1fr);
   margin-top: 600px; /* Espacio reducido para que no se superponga con la luna */
   color: #222; /* Color del texto del contador */
   z-index: 0; /* Aseg?rate de que est? por encima de la luna */
-  grid-column: 2;
+
 }
 
 .socials {
 	 position: relative;
   margin-top: 20px; /* Espacio entre el contador y las redes sociales */
   z-index: 1; /* Aseg?rate de que est? por encima de la luna */
-  grid-column: 2;
+
 }
 
 .social-buttons a {
@@ -127,7 +123,7 @@ grid-template-rows: repeat(10, 1fr);
   color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
-  grid-column: 2;
+
 }
 
 .social-buttons a:hover {
@@ -143,6 +139,7 @@ grid-template-rows: repeat(10, 1fr);
   color: #222; /* Color del texto */
   z-index: 1; /* Aseg?rate de que est? por encima de la luna */
 }
+
 
 @media (max-width: 1024px) {
   .moon {
