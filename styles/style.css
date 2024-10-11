@@ -1,31 +1,28 @@
 
 @font-face {
   font-family: 'Shakuro Brush';
-  src: url('../fonts/ShakuroBrush.ttf') format('truetype');
+  src: url('./fonts/ShakuroBrush.ttf') format('truetype');
 }
 
 html, body {
-  height: 100vh; /* Altura total de la p?gina */
+  height: 200vh; /* Altura total de la p?gina */
   width: 100%;
   background-color: #ffffff; /* Fondo blanco */
   margin: 0; /* Eliminar m?rgenes por defecto */
   scroll-behavior: smooth;
-}
-
-body {
   font-family: 'Shakuro Brush', sans-serif; /* Aplicar la fuente personalizada */
   text-align: center;
   color: #bc1010;
   letter-spacing: .1em;
   position: relative; /* Permitir posicionamiento relativo de elementos */
   padding-bottom: 60px; /* Espacio para el footer */
-
 }
+
 
 .moon {
   width: 600px;
   height: 600px;
-  border-radius: 100%;
+  border-radius: 50%;
   overflow: visible;
   position: fixed; /* Fija la posici?n */
   top: 47%; 
@@ -87,7 +84,13 @@ body {
 }
 
 
-
+.container {
+  position: absolute; /* Posicionamiento absoluto para mayor control */
+  left: 75%; /* 3/4 del ancho de la pantalla */
+  top: 65%;
+  transform: translateX(-50%); /* Ajuste para que el contenedor esté en 3/4, manteniendo su centro */
+  width: 50%; /* O el ancho que quieras darle al contenedor */
+}
 
 
 
@@ -103,31 +106,39 @@ body {
 
 .countdown {
   position: relative;
-  margin-top: 600px; /* Espacio reducido para que no se superponga con la luna */
   color: #222; /* Color del texto del contador */
   z-index: 0; /* Aseg?rate de que est? por encima de la luna */
 
 }
 
 .socials {
-	 position: relative;
   margin-top: 20px; /* Espacio entre el contador y las redes sociales */
   z-index: 1; /* Aseg?rate de que est? por encima de la luna */
+}
 
+.social-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content)); /* Los botones se ajustarán según el contenido, pero tendrán un ancho mínimo de 150px */
+  justify-content: center; /* Centrar los botones */
+  gap: 10px; /* Añadir espacio entre los botones */
 }
 
 .social-buttons a {
-  margin: 0 10px;
-  padding: 10px 20px;
+  padding: 10px 10px;    /* Tamaño del botón */
   background-color: #bc1010;
   color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
+  text-align: center;     /* Centra el texto dentro de cada botón */
+  white-space: nowrap;    /* Evita que el texto dentro del botón se divida en varias líneas */
 
+  
 }
-
 .social-buttons a:hover {
+
+  
   background-color: #ff0000;
+  
 }
 
 .footer {
@@ -141,7 +152,10 @@ body {
 }
 
 
-@media (max-width: 1024px) {
+
+
+
+@media (max-width: 1140px) {
   .moon {
     width: 400px;
     height: 400px;
@@ -149,6 +163,13 @@ body {
 
   .logo {
     width: 300px;
+  }
+
+
+  .container{
+    
+    top: 42%;
+    width: 50%; 
   }
 
   .nippon {
@@ -171,6 +192,7 @@ body {
     height: 300px;
 	 top: 20%; 
   left: 50%;
+  
   }
 
   .logo {
@@ -186,4 +208,17 @@ body {
     margin-top: 300px;
 
   }
+
+  html, body{
+height: 150vh;
+
+  }
+
+  .container{
+    top: 42%;
+    width: 100%; 
+    left: 50%;
+
+  }
+  
 }
