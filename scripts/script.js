@@ -1,8 +1,40 @@
+
+
 let lastScrollTop = 0;
 let lastRotationValue = 0;
 
+const disc = document.querySelector('.disc');
+
+// Fecha objetivo para el evento
+const targetDate = new Date('2024-11-17T14:00:00'); // Cambia esto a la fecha objetivo
+
+let debugDate = null; // Fecha para debug. Usar null o new Date('2024-11-17T14:00:00')
+
+
+const eventMessage = "隆EL EVENTO HA COMENZADO!";
+const finishedEventMessage = "EL EVENTO HA TERMINADO. 隆NOS VEMOS LA PR脫XIMA!";
+
+// Variable para la fecha de finalizaci贸n del evento
+let endDate = new Date('2024-11-17T20:00:00'); // Cambia esto a una fecha espec铆fica si lo deseas
+
+// Funci贸n para obtener la fecha actual o la fecha de debugging
+function getCurrentDate() {
+    return debugDate !== null ? debugDate : new Date(); // Devuelve debugDate si no es null, de lo contrario, devuelve la fecha actual
+}
+
+function calculateMaxRotation() {
+    const now = getCurrentDate();
+    const timeUntilEvent = targetDate - now;
+
+    const totalDaysUntilEvent = Math.floor(timeUntilEvent / (1000 * 60 * 60 * 24));
+    const maxRotation = Math.min(180, 60 + (120 * (30 - totalDaysUntilEvent) / 30));
+
+    return maxRotation;
+}
+
+const maxRotationValue = calculateMaxRotation();
+
 function updateRotation(rotationValue) {
-    const disc = document.querySelector('.disc');
     if (rotationValue !== lastRotationValue) {
         disc.style.transform = `rotateX(${rotationValue}deg)`;
         lastRotationValue = rotationValue; 
@@ -13,35 +45,75 @@ document.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY; 
     const windowHeight = document.documentElement.scrollHeight - window.innerHeight; 
     const scrollPercentage = scrollPosition / windowHeight; 
-    const rotationValue = scrollPercentage * 60; 
+    const rotationValue = scrollPercentage * maxRotationValue;
 
     updateRotation(rotationValue);
     lastScrollTop = scrollPosition; 
 });
 
-// Contador de cuenta regresiva hasta el 17 de Noviembre
-const targetDate = new Date('2024-11-17T00:00:00'); // Cambia esta fecha por la fecha objetivo
 const timerDisplay = document.getElementById('timer');
-const disc = document.querySelector('.disc');
+
+// Variable de estado para verificar si el mensaje ha sido mostrado
+let messageShown = false;
 
 function updateCountdown() {
-    const now = new Date();
-    const remainingTime = targetDate - now;
+    // Incrementa debugDate cada segundo si no es null
+    if (debugDate !== null) {
+        debugDate = new Date(debugDate.getTime() + 1000); // Incrementa debugDate en 1 segundo
+    }
 
+    const now = getCurrentDate();
+    const remainingTime = targetDate - now;
+    const endRemainingTime = endDate - now; // Calcular el tiempo restante para la fecha de finalizaci贸n
+
+    // Calcular el tiempo restante
     const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
     const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-    timerDisplay.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`; // Mantiene el formato
+    // Mostrar el temporizador solo si no ha comenzado el evento
+    if (remainingTime > 0) {
+        timerDisplay.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        timerDisplay.classList.remove('hide'); // Asegurarse de que el temporizador se muestre
+    } else if (remainingTime <= 0 && remainingTime > -1000) {
+        // Si el tiempo llega a 0, muestra el formato manteniendo el estilo
+        timerDisplay.innerHTML = `0d 0h 0m 0s`;
+        timerDisplay.classList.remove('hide');
+    }
 
-    if (remainingTime <= 0) {
-        clearInterval(countdownInterval);
-        timerDisplay.innerHTML = "vento en curso!";
+    // Calcular la diferencia entre la apertura y cierre del evento
+    const eventDuration = endDate - targetDate;
+
+    // Verifica si el evento ha comenzado o terminado
+    if (remainingTime < 0 && endRemainingTime > 0) {
+        // Si el evento ha comenzado pero no ha terminado
+        if (!messageShown) { // Solo mostrar el mensaje si no se ha mostrado antes
+            timerDisplay.classList.add('fade-out'); // Aplica fade out
+            setTimeout(() => {
+                timerDisplay.innerHTML = eventMessage; // Actualiza el mensaje
+                timerDisplay.classList.remove('fade-out'); // Elimina fade out
+                timerDisplay.classList.add('fade-in'); // Aplica fade in
+                setTimeout(() => timerDisplay.classList.remove('fade-in'), 500); // Elimina fade in despu茅s de un tiempo
+            }, 500); // Espera el tiempo de transici贸n para ocultar
+            messageShown = true; // Marca que el mensaje ha sido mostrado
+        }
+    } else if (remainingTime <= -eventDuration) {
+        // Si el tiempo ha pasado el tiempo de cierre del evento
+        if (messageShown) { // Solo actualizar el mensaje si ya se ha mostrado el mensaje del evento
+            timerDisplay.classList.add('fade-out'); // Aplica fade out
+            setTimeout(() => {
+                timerDisplay.innerHTML = finishedEventMessage; // Mensaje de finalizaci贸n
+                timerDisplay.classList.remove('fade-out'); // Elimina fade out
+                timerDisplay.classList.add('fade-in'); // Aplica fade in
+                setTimeout(() => timerDisplay.classList.remove('fade-in'), 500); // Elimina fade in despu茅s de un tiempo
+            }, 500); // Espera el tiempo de transici贸n para ocultar
+            messageShown = false; // Actualiza el estado para el mensaje mostrado
+        }
     }
 }
 
-// Inicializa el contador al cargar la p醙ina
+// Inicializa el contador al cargar la p谩gina
 updateCountdown();
 
 // Actualizar el contador cada segundo
