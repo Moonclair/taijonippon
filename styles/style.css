@@ -19,6 +19,7 @@ html, body {
 }
 
 
+
 .moon {
   width: 600px;
   height: 600px;
@@ -142,46 +143,134 @@ html, body {
 }
 
 .footer {
-  position: fixed; /* Cambiado a fixed para mantenerlo siempre visible */
+  position: fixed; /* Mantener el footer siempre visible en la parte inferior */
   bottom: 0; /* Siempre en la parte inferior */
   width: 100%;
   padding: 10px; /* Espacio alrededor */
   background-color: #f0f0f0; /* Color de fondo para el pie */
   color: #222; /* Color del texto */
-  z-index: 1; /* Aseg?rate de que est? por encima de la luna */
+  z-index: 1; /* Asegúrate de que esté por encima de la luna */
+  text-align: center; /* Centrar el contenido */
+}
+
+
+.refferal_badge {
+  width: 100px; /* Tamaño más pequeño */
+  height: auto;
+  display: inline-block;
+  vertical-align: middle; /* Alinear con el botón */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .optionalParent {
+      flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+      align-items: center; /* Alinear al centro */
+  }
+}
+
+
+#mc_embed_shell {
+  text-align: center;
+  padding: 20px;
+}
+
+#mc_embed_signup h2 {
+  font-size: 18px;
+  color: #bc1010;
+  margin-bottom: 10px;
+}
+
+#mc_embed_signup .mc-field-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* Centra el grupo de input y botón */
+  
+}
+
+#mc_embed_signup input[type="email"] {
+  
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  max-width: 200px; 
+  min-width: 180px;
+  width: 80%; 
+  
+}
+
+#mc_embed_signup .button {
+  
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #bc1010; /* Color de fondo del botón */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto; /* El botón solo ocupará el espacio necesario */
+  min-width: 95px;
+}
+
+
+
+#mc_embed_signup .refferal_badge {
+  width: 100px; /* Tamaño más pequeño */
+  height: auto;
+  display: inline-block;
+  margin-left: 10px; /* Separación con el formulario */
+  vertical-align: middle; /* Alinear con el botón */
+}
+
+
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 
 
 
 
-@media (max-width: 1140px) {
-  .moon {
-    width: 400px;
-    height: 400px;
-  }
-
-  .logo {
-    width: 300px;
-  }
 
 
-  .container{
-    
-    top: 42%;
-    width: 50%; 
-  }
-
-  .nippon {
-    font-size: 80px;
-  }
-
-  .countdown {
-    margin-top: 400px;
-  }
+@for $i from 1 through $n{
+			.p#{$i}{
+				transform: rotate(#{$i * 360/$n}deg) skew(#{90 - 360/$n}deg) 
+			}
 }
+
+@keyframes rot{
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
+
+  html, body{
+    height: 150vh;
+    
+      }
 
   body {
     left: 0%;
@@ -209,10 +298,7 @@ html, body {
 
   }
 
-  html, body{
-height: 150vh;
 
-  }
 
   .container{
     top: 42%;
@@ -220,5 +306,46 @@ height: 150vh;
     left: 50%;
 
   }
-  
+
+    #mc_embed_signup .mc-field-group {
+    flex-direction: column; /* Coloca los elementos en columna en pantallas pequeñas */
+    align-items: center; /* Centra los elementos en el eje horizontal */
+  }
+
+  #mc_embed_signup input[type="email"],
+  #mc_embed_signup .button {
+    width: 80%; /* Ambos elementos ocupan el 80% del ancho en pantallas pequeñas */
+    max-width: 300px; /* Limita el ancho máximo para evitar que se estiren demasiado */
+  }
+
+  #mc_embed_signup .button {
+    width: 15%; /* Un poco más pequeño que el campo de email */
+  }
+
+}
+
+@media (max-width: 1140px) {
+  .moon {
+    width: 400px;
+    height: 400px;
+  }
+
+  .logo {
+    width: 300px;
+  }
+
+
+  .container{
+    
+    top: 42%;
+    width: 50%; 
+  }
+
+  .nippon {
+    font-size: 80px;
+  }
+
+  .countdown {
+    margin-top: 400px;
+  }
 }
