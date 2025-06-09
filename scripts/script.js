@@ -6,7 +6,7 @@ let lastRotationValue = 0;
 const disc = document.querySelector('.disc');
 
 // Fecha objetivo para el evento
-const targetDate = new Date('2025-07-17T14:00:00'); // Cambia esto a la fecha objetivo
+const targetDate = new Date('2025-11-17T14:00:00'); // Cambia esto a la fecha objetivo
 
 let debugDate = null; // Fecha para debug. Usar null o new Date('2024-11-17T14:00:00')
 
@@ -27,7 +27,7 @@ function calculateMaxRotation() {
     const timeUntilEvent = targetDate - now;
 
     const totalDaysUntilEvent = Math.floor(timeUntilEvent / (1000 * 60 * 60 * 24));
-    const maxRotation = Math.min(180, 60 + (120 * (30 - totalDaysUntilEvent) / 30));
+    const maxRotation = Math.min(180, Math.max(0, 60 + (120 * (30 - totalDaysUntilEvent) / 30)));
 
     return maxRotation;
 }
