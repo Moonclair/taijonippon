@@ -6,7 +6,7 @@ let lastRotationValue = 0;
 const disc = document.querySelector('.disc');
 
 // Fecha objetivo para el evento
-const targetDate = new Date('2025-11-17T14:00:00'); // Cambia esto a la fecha objetivo
+const targetDate = new Date('2025-11-9T14:00:00'); // Cambia esto a la fecha objetivo
 
 let debugDate = null; // Fecha para debug. Usar null o new Date('2024-11-17T14:00:00')
 
@@ -15,7 +15,7 @@ const eventMessage = "¡EL EVENTO HA COMENZADO!";
 const finishedEventMessage = "EL EVENTO HA TERMINADO. ¡NOS VEMOS LA PRÓXIMA!";
 
 // Variable para la fecha de finalización del evento
-let endDate = new Date('2025-11-17T20:00:00'); // Cambia esto a una fecha específica si lo deseas
+let endDate = new Date('2025-11-9T20:00:00'); // Cambia esto a una fecha específica si lo deseas
 
 // Función para obtener la fecha actual o la fecha de debugging
 function getCurrentDate() {
@@ -118,3 +118,4 @@ updateCountdown();
 
 // Actualizar el contador cada segundo
 const countdownInterval = setInterval(updateCountdown, 1000);
+
